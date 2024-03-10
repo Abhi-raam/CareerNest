@@ -1,10 +1,9 @@
-import React from 'react'
 import JobCard from '../../Components/JobCard'
 
 function UserJobs() {
     return (
-        <div>
-            <div className="grid grid-cols-3 gap-3 justify-items-center pt-5 pb-5">
+        <div className=' '>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 justify-items-center pt-5 pb-5 px-2">
                 <JobCard />
                 <JobCard />
                 <JobCard />

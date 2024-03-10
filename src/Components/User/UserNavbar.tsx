@@ -1,10 +1,9 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 function UserNavbar() {
     return (
         <div>
-            <div className="navbar bg-blue_third">
+            <div className="navbar bg-blue_third ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">

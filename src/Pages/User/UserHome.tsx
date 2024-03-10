@@ -1,10 +1,9 @@
-import React from 'react'
 import JobCard from '../../Components/JobCard'
-
+import './UserHome.css'
 function UserHome() {
   return (
-    <div className='grid grid-cols-4 justify-items-center pt-5 h-[91vh]'>
-      <div className=' grid grid-cols-2 col-span-3 gap-10 h-[88vh] overflow-y-scroll  pb-2'>
+    <div className='grid lg:grid-cols-4 justify-items-center  lg:h-[91vh]'>
+      <div className=' grid md:grid-cols-2 col-span-3 gap-10 lg:h-[88vh] overflow-y-scroll scrollbar-hidden pb-3 px-2 pt-4'>
         <JobCard/>
         <JobCard/>
         <JobCard/>
@@ -15,7 +14,7 @@ function UserHome() {
         <JobCard/>
         <JobCard/>
       </div>
-      <div>news card</div>
+      <div className='hidden lg:block'>news card</div>
     </div>
   )
 }

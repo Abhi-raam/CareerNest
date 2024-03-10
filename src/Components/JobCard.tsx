@@ -1,4 +1,3 @@
-import React from 'react'
 import js from '../assets/javascript.png'
 import { FaLocationDot,FaIndianRupeeSign  } from "react-icons/fa6";
 import { BsBookmarkPlus } from "react-icons/bs";
@@ -6,7 +5,7 @@ import { BsBookmarkPlus } from "react-icons/bs";
 
 function JobCard() {
     return (
-        <div className='rounded-md bg-blue_third w-[25rem] h-[14rem] p-4 space-y-4'>
+        <div className='rounded-md bg-blue_third lg:w-[25rem] h-[14rem] p-4 space-y-4'>
             <div className='flex justify-between '>
                 <div className='flex space-x-3'>
                     <div>
