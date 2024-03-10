@@ -36,7 +36,7 @@ function JobCard() {
             </div>
             <div className='flex justify-between items-center'>
                 <h3 className='flex items-center space-x-2'><FaIndianRupeeSign /> <span>400K - 600K</span></h3>
-                <h3 className='bg-blue_secondary text-blue_main rounded-full p-1 px-3 cursor-pointer text-xs font-semibold transition hover:scale-105'>CONTACT</h3>
+                <h3 className='bg-blue_secondary text-blue_main rounded-full p-1 px-3 cursor-pointer text-xs font-semibold transition hover:scale-105'>KNOW MORE</h3>
             </div>
         </div>
     )
