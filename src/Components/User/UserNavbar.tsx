@@ -19,7 +19,7 @@ function UserNavbar() {
                     </div>
                 </div>
                 <div className="navbar-center">
-                    <a className="btn btn-ghost text-2xl font-semibold text-blue_secondary">CareerNext</a>
+                    <a className="btn btn-ghost text-2xl font-semibold text-blue_secondary">CareerNest</a>
                 </div>
                 <div className="navbar-end">
                     <div className="dropdown dropdown-end">

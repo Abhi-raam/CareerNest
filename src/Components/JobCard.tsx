@@ -3,7 +3,7 @@ import { FaLocationDot,FaIndianRupeeSign  } from "react-icons/fa6";
 import { BsBookmarkPlus } from "react-icons/bs";
 
 
-function JobCard() {
+function JobCard({name}:{name:string}) {
     return (
         <div className='rounded-md bg-blue_third lg:w-[25rem] h-[14rem] p-4 space-y-4'>
             <div className='flex justify-between '>
@@ -12,7 +12,7 @@ function JobCard() {
                         <img src={js} className='w-[2rem]' alt="" />
                     </div>
                     <div className='items-center'>
-                        <h2 className='font-semibold'>JavaScript</h2>
+                        <h2 className='font-semibold'>{name}</h2>
                         <p className='font-semibold text-xs flex items-center '>
                             <FaLocationDot />
                             Bangalore
