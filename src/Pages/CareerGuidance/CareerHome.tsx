@@ -1,7 +1,7 @@
 
 function CareerHome() {
   return (
-    <div>CareerHome</div>
+    <div className=" h-screen">CareerHome</div>
   )
 }
 

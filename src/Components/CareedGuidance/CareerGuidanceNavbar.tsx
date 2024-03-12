@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import profilePic from '../../assets/profilepic.jpeg'
 
-function UserNavbar() {
+function CareerGuidanceNavbar() {
     return (
         <div>
             <div className="navbar bg-blue_main shadow-lg ">
@@ -11,10 +11,9 @@ function UserNavbar() {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-semibold">
-                            <li><Link to='/'>Home</Link></li>
-                            <li><Link to="/saved">Saved</Link></li>
-                            <li><Link to="/jobs">Jobs</Link></li>
-                            <li><Link to="/applied">Applied Jobs</Link></li>
+                            <li><Link to='/career'>Home</Link></li>
+                            <li><Link to="/">All Jobs</Link></li>
+                            <li><Link to="#">Add Jobs</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -29,7 +28,7 @@ function UserNavbar() {
                             </div>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-semibold">
-                            <li><Link to="/profile">Profile</Link></li>
+                            <li><Link to="/">Profile</Link></li>
                             <li><a>Logout</a></li>
                         </ul>
                     </div>
@@ -39,4 +38,4 @@ function UserNavbar() {
     )
 }
 
-export default UserNavbar
+export default CareerGuidanceNavbar

@@ -1,9 +1,14 @@
 import js from '../assets/javascript.png'
-import { FaLocationDot,FaIndianRupeeSign  } from "react-icons/fa6";
-import { BsBookmarkPlus } from "react-icons/bs";
+import { BsBookmarkHeart } from "react-icons/bs";
+import { FaLocationDot, FaIndianRupeeSign } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
-
-function JobCard({name}:{name:string}) {
+type jobCard = {
+    name: string,
+    jobId?: string,
+    status?: boolean
+}
+function JobCard({ name, status, jobId }: jobCard) {
     return (
         <div className='rounded-md bg-blue_third lg:w-[25rem] h-[14rem] p-4 space-y-4'>
             <div className='flex justify-between '>
@@ -20,7 +25,7 @@ function JobCard({name}:{name:string}) {
                     </div>
                 </div>
                 <div>
-                    <BsBookmarkPlus className='text-2xl cursor-pointer hover:scale-105 transition' />
+                    <BsBookmarkHeart className={`text-3xl cursor-pointer hover:scale-105 transition font-semibold ${status ? "text-green-600" : null}`} />
                 </div>
             </div>
             <div className='space-y-3'>
@@ -35,8 +40,10 @@ function JobCard({name}:{name:string}) {
                 </div>
             </div>
             <div className='flex justify-between items-center'>
-                <h3 className='flex items-center space-x-2'><FaIndianRupeeSign /> <span>400K - 600K</span></h3>
-                <h3 className='bg-blue_secondary text-blue_main rounded-full p-1 px-3 cursor-pointer text-xs font-semibold transition hover:scale-105'>KNOW MORE</h3>
+                <h3 className='flex items-center space-x-2'><FaIndianRupeeSign /> <span className='font-medium'>400K - 600K</span></h3>
+                <Link to={`/jobs/${jobId}`}>
+                    <h3 className='bg-blue_secondary text-blue_main rounded-full p-1 px-3 cursor-pointer text-xs font-semibold transition hover:scale-105'>KNOW MORE</h3>
+                </Link>
             </div>
         </div>
     )
