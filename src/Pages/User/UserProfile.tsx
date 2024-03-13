@@ -2,7 +2,7 @@ import UserProfileCard from "../../Components/User/UserProfileCard"
 
 function UserProfile() {
   return (
-    <div className=" h-[90vh] flex items-center justify-center">
+    <div className="">
       <UserProfileCard/>
     </div>
   )
