@@ -38,17 +38,18 @@ function UserEdit() {
 
     const submitBtn = (event: React.FormEvent) => {
         event.preventDefault();
-        // console.log(firstName);
-        // console.log(lastName);
-        // console.log(mobile);
-        // console.log(email);
-        // console.log(dept);
-        // console.log(job);
-        // console.log(gender);
-        // console.log(dob);
-        // console.log(district);
-        // console.log(state);
+        console.log(firstName);
+        console.log(lastName);
+        console.log(mobile);
+        console.log(email);
+        console.log(dept);
+        console.log(job);
+        console.log(gender);
+        console.log(dob);
+        console.log(district);
+        console.log(state);
         console.log(skill);
+        console.log(about);
     }
 
     return (
