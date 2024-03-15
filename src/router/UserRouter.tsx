@@ -7,6 +7,7 @@ import UserJobs from "../Pages/User/UserJobs";
 import UserSavedJob from "../Pages/User/UserSavedJob";
 import UserAppliedJobs from "../Pages/User/UserAppliedJobs";
 import UserJobDetails from "../Pages/User/UserJobDetails";
+import UserRegister from "../Pages/User/UserRegister";
 
 function UserRouter() {
   return (
@@ -20,6 +21,7 @@ function UserRouter() {
             <Route path="/applied" element={<UserAppliedJobs />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/login" element={<UserLogin />} />
+            <Route path="/signup" element={<UserRegister/>} />
         </Routes>
     </div>
   );
