@@ -3,7 +3,7 @@ import { useAuth } from '../Context/AuthContext';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   // Replace this with your actual logic to check for the user token
-  const userToken: boolean = false;
+  // const userToken: boolean = false;
   const location = useLocation();
   const {authUser} = useAuth()
 
