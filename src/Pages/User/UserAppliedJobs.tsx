@@ -1,5 +1,18 @@
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
+import axios from '../../Axios';
 
 function UserAppliedJobs() {
+  const [token] = useCookies(["careerNest-token"]);
+  useEffect(() => {
+    axios.get("staff/job/apply-job", {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `token ${token['careerNest-token']}`
+      }
+    }).then(() => {
+    })
+  }, [token]);
   return (
     <div className="h-screen">
       <div className="pt-4">

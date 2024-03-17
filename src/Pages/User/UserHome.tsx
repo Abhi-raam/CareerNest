@@ -1,14 +1,15 @@
 import UserNewsCard from '../../Components/User/UserNewsCard'
+import { useAuth } from '../../Context/AuthContext'
 import UserCourseTab from './UserCourseTab'
 // import UserProfileCard from '../../Components/User/UserProfileCard'
 import './UserHome.css'
 import UserInternshipTab from './UserInternshipTab'
 import UserJobTab from './UserJobTab'
 function UserHome() {
+  const {authUser} = useAuth()
   return (
     <div className='flex justify-evenly  '>
       <div className='hidden lg:block pt-16 px-2 '>
-        {/* <div><UserProfileCard /></div> */}
         <div><UserNewsCard /></div>
       </div>
       <div className='p-4'>
