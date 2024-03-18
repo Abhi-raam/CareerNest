@@ -15,16 +15,15 @@ function UserProfileCard() {
                     <h3 className='text-blue_secondary text-xl font-semibold text-start'>About</h3>
                     <div className='pt-2'>
                         <p className='text-sm font-medium text-justify'>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen
-                            book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged.
+                            Web developer, passionate about implementing and launching new projects. Ability to translate business
+                            requirements into technical solutions. Proficient in harnessing a diverse set of technologies to create
+                            dynamic and user-friendly web applications.
+                            .
                         </p>
                     </div>
                 </div>
             </div>
-            
+
             <div className="px-3 pt-6 col-span-2 pb-4">
                 <div role="tablist" className="tabs tabs-lifted">
 

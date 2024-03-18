@@ -15,7 +15,7 @@ function UserJobTab() {
             }
         }).then((response) => {
             setJobs(response.data);
-            console.log(response.data);
+            // console.log(response.data);
             
         }).catch(error => {
             console.error('Error fetching jobs:', error);

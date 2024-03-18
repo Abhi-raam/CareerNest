@@ -12,7 +12,7 @@
 
 //     const value = { authUser, setAuthUser}
 
-    
+
 
 //     return (
 //         <AuthContext.Provider value={value}>
@@ -23,10 +23,17 @@
 
 
 import React, { useState, createContext, useContext, ReactNode } from "react";
-
+type userType = {
+  token:string,
+  user_id: number,
+  email: string,
+  username: string
+}
 interface AuthContextType {
-  authUser: string; // Change 'any' to your authUser type
-  setAuthUser: React.Dispatch<React.SetStateAction<any>>; // Change 'any' to your authUser type
+  authUser: string;
+  setAuthUser: React.Dispatch<React.SetStateAction<string>>; // Change 'any' to your authUser type
+  user: userType
+  setUser: React.Dispatch<React.SetStateAction<userType>>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -43,9 +50,14 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [authUser, setAuthUser] = useState<string>(""); // Change 'any' to your authUser type
-
-  const value: AuthContextType = { authUser, setAuthUser };
+  const [authUser, setAuthUser] = useState<string>("");
+  const [user, setUser] = useState<userType>({
+    token:"",
+    user_id: 0, 
+    email: "",
+    username: ""
+  });
+  const value: AuthContextType = { authUser, setAuthUser, user, setUser };
 
   return (
     <AuthContext.Provider value={value}>

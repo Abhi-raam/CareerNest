@@ -9,7 +9,8 @@ function UserLogin() {
   const [username, setUserName] = useState("")
   const [password, setPassword] = useState("")
   const [token,setToken] = useCookies(["careerNest-token"])
-  const {authUser,setAuthUser} = useAuth()
+  const {authUser,setAuthUser,setUser} = useAuth()
+  
   const loginSubmitBtn = async (event:React.FormEvent)=>{
     event.preventDefault();
     console.log(authUser);
@@ -17,6 +18,7 @@ function UserLogin() {
     await axios.post('/user/login',{username,password}).then((response)=>{
       setToken("careerNest-token",response.data.token)
       setAuthUser(token["careerNest-token"]);
+      setUser(response.data)
     })
   }
   return (

@@ -1,17 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from '../../Axios';
 
 function UserAppliedJobs() {
   const [token] = useCookies(["careerNest-token"]);
+  const [appliedJobs, setAppliedJobs] = useState<any>()
   useEffect(() => {
     axios.get("staff/job/apply-job", {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `token ${token['careerNest-token']}`
       }
-    }).then(() => {
+    }).then((response) => {
+      setAppliedJobs(response.data);
+
     })
+
   }, [token]);
   return (
     <div className="h-screen">
@@ -32,29 +36,15 @@ function UserAppliedJobs() {
           </thead>
           <tbody className="text-center">
             {/* row 1 */}
-            <tr className="">
-              <td>1</td>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Pending</td>
-              <td><button className="p-2 rounded-md font-semibold bg-red-500 hover:bg-red-600 text-white">Cancel</button></td>
-            </tr>
-            {/* row 2 */}
-            <tr className="">
-              <td>2</td>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Approved</td>
-             <td><button className="p-2 rounded-md font-semibold bg-red-500 hover:bg-red-600 text-white">Cancel</button></td>
-            </tr>
-            {/* row 3 */}
-            <tr className="">
-              <td>3</td>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Rejected</td>
-              <td><button className="p-2 rounded-md font-semibold bg-red-500 hover:bg-red-600 text-white">Cancel</button></td>
-            </tr>
+            {appliedJobs?.map((appliedjob: any, index: number) => (
+              <tr className="font-medium capitalize">
+                <td>{index + 1}</td>
+                <td>{appliedjob.job.company.company.username}</td>
+                <td>{appliedjob?.job.title}</td>
+                <td>{appliedjob?.status}</td>
+                <td><button className={`p-2 rounded-md font-semibold bg-red-500  text-white btn ${appliedjob.status === "approved"? 'hover:bg-gray-500 btn-disabled cursor-not-allowed' : 'bg-red-500 hover:bg-red-600 text-white' }`}>Cancel</button></td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

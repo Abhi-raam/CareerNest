@@ -4,13 +4,15 @@ import { useEffect, useState } from 'react';
 import axios from '../../Axios';
 import { useParams } from 'react-router-dom';
 import JobCard from '../../Components/JobCard';
+import Swal from 'sweetalert2';
+import { useAuth } from '../../Context/AuthContext';
 
 function UserJobDetails() {
   const [jobs, setJobs] = useState([]);
   const [jobDetails, setJobDetails] = useState<any>();
   const [token] = useCookies(["careerNest-token"]);
   const { id } = useParams()
-
+  const {user} = useAuth()
   useEffect(() => {
     axios.get(`staff/job/more/${id}`, {
       headers: {
@@ -24,27 +26,44 @@ function UserJobDetails() {
 
     axios.get('/staff/job', {
       headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `token ${token['careerNest-token']}`
+        'Content-Type': 'application/json',
+        'Authorization': `token ${token['careerNest-token']}`
       }
-  }).then((response) => {
+    }).then((response) => {
       setJobs(response.data);
       console.log(response.data);
-      
-  }).catch(error => {
+
+    }).catch(error => {
       console.error('Error fetching jobs:', error);
-  });
+    });
   }, [token]);
 
+  const applyBtnClick = () => {
+    Swal.fire({
+      title: "Apply for the job",
+      text: `Apply for ${jobDetails?.title}`,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Don't Apply",
+      confirmButtonText: "Apply"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.post('staff/job/apply-job', { job_id: jobDetails?.id, user_id: user.user_id }, {
+          headers: { 'Content-Type': 'application/json', 'Authorization': `token ${token['careerNest-token']}` }
+        }).then(() => {
+        })
+        Swal.fire({
+          title: "Applied!",
+          text: `You have applied for ${jobDetails?.title}`,
+          icon: "success"
+        });
+      }
+    });
+  };
 
-  const applyBtnClick =()=>{
-    axios.post('staff/job/apply-job',{ job_id: jobDetails?.id, user_id:1 }, {
-      headers: {'Content-Type': 'application/json','Authorization': `token ${token['careerNest-token']}`}
-    }).then(() => {
-      console.log("Applied to job with id" + id);
-    })
-    
-  }
+
   return (
     <div className="grid lg:grid-cols-3 justify-items-center ">
       <div className=" lg:col-span-2  w-full p-2 px-10 pt-5 pb-5">
@@ -103,9 +122,9 @@ function UserJobDetails() {
           <h2 className='text-lg font-medium text-center'>Similar Jobs</h2>
         </div>
         <div className='grid grid-cols-1 justify-items-center gap-4 overflow-y-scroll h-[85vh] scrollbar-hidden pb-4'>
-        {jobs.map((job, index) => (
-                <JobCard key={index} job={job} />
-            ))}
+          {jobs.map((job, index) => (
+            <JobCard key={index} job={job} />
+          ))}
         </div>
       </div>
     </div>

@@ -1,26 +1,60 @@
 import { BsBookmarkHeart } from "react-icons/bs";
 import { FaLocationDot, FaIndianRupeeSign } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import axios from '.././Axios';
+import { useCookies } from "react-cookie";
+import { useAuth } from "../Context/AuthContext";
+import Swal from "sweetalert2";
 
 type jobCard = {
-    id : number,
-    image : string,
-    title : string,
-    type : string,
-    vaccancies : number,
-    package : string,
-    experiance : number,
-    description : string,
-    qualification : any,
-    responsibility : any,
-    company : any
+    id: number,
+    image: string,
+    title: string,
+    type: string,
+    vaccancies: number,
+    package: string,
+    experiance: number,
+    description: string,
+    qualification: any,
+    responsibility: any,
+    company: any
+
 }
 type JobCardProps = {
     job: jobCard;
+    saved?: boolean
 }
-function JobCard({job}: JobCardProps) {
-    console.log(job);
-    
+function JobCard({ job, saved }: JobCardProps) {
+    const { user } = useAuth()
+    const [token] = useCookies(["careerNest-token"]);
+
+    const savedBtnClick = () => {
+        Swal.fire({
+            title: "Save the job",
+            text: `do you want to save ${job?.title}`,
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "Don't Save",
+            confirmButtonText: "Save"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.post("staff/job/save", { user_id: user.user_id, job_id: job.id }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `token ${token['careerNest-token']}`
+                    }
+                })
+                Swal.fire({
+                    title: "Saved!",
+                    text: `You have save the job ${job?.title}`,
+                    icon: "success"
+                });
+            }
+        });
+    }
+
     return (
         <div className='rounded-md bg-blue_third w-full lg:w-[25rem] h-[18rem] p-4 space-y-4'>
             <div className='flex justify-between '>
@@ -37,7 +71,7 @@ function JobCard({job}: JobCardProps) {
                     </div>
                 </div>
                 <div>
-                    <BsBookmarkHeart className="text-3xl cursor-pointer hover:scale-105 transition font-semibold  "/>
+                    <BsBookmarkHeart className={`text-3xl cursor-pointer hover:scale-105 transition font-semibold ${saved ? 'text-green-600' : null} `} onClick={savedBtnClick} />
                 </div>
             </div>
             <div className='space-y-3'>
